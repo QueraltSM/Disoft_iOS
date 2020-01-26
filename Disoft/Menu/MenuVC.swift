@@ -54,6 +54,9 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell?.imageView?.image = UIImage(named: images[indexPath.row])
         cell?.textLabel?.text = data[indexPath.row]
         setDetailTextLabel(cell: cell!, title: data[indexPath.row])
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.init(hexString: "#DDF4FF")
+        cell!.selectedBackgroundView = backgroundView
         return cell!
     }
     
@@ -80,8 +83,13 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data[indexPath.row] {
+        case "Mensajes":
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MessagesVC") as! MessagesVC
+            self.present(nextVC, animated: false, completion: nil)
+            break
         case "Salir":
             logout()
+            break
         default:
             break
         }

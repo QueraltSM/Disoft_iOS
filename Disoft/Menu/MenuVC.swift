@@ -83,6 +83,10 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data[indexPath.row] {
+        case "Inicio":
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.present(nextVC, animated: false, completion: nil)
+            break
         case "Mensajes":
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MessagesVC") as! MessagesVC
             self.present(nextVC, animated: false, completion: nil)

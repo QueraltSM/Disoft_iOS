@@ -10,6 +10,8 @@
 		0DA759ED6C3EED3088B3660D /* Pods_Disoft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4675F47C75D4E14691DA733 /* Pods_Disoft.framework */; };
 		62469C7C23DCDBA5004A5F4F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62469C7B23DCDBA4004A5F4F /* Icon.png */; };
 		62469C8023DCE078004A5F4F /* disoft_letters.png in Resources */ = {isa = PBXBuildFile; fileRef = 62469C7F23DCE077004A5F4F /* disoft_letters.png */; };
+		62903A7E23DF26B700C4FD95 /* MessageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */; };
+		62903A8423DF2F6A00C4FD95 /* back_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 62903A8323DF2F6A00C4FD95 /* back_menu.png */; };
 		62AF4D0F23DCA46D001A6C72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AF4D0E23DCA46D001A6C72 /* AppDelegate.swift */; };
 		62AF4D1123DCA46D001A6C72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AF4D1023DCA46D001A6C72 /* ViewController.swift */; };
 		62AF4D1423DCA46D001A6C72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62AF4D1223DCA46D001A6C72 /* Main.storyboard */; };
@@ -23,8 +25,6 @@
 		62E833AF23DEFBAD0013609D /* received_messages.png in Resources */ = {isa = PBXBuildFile; fileRef = 62E833AE23DEFBAC0013609D /* received_messages.png */; };
 		62EB141723DDDC5F001197A5 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62EB141623DDDC5F001197A5 /* menu_icon.png */; };
 		62F3FCA023DDA1D50024AA71 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F3FC9F23DDA1D50024AA71 /* HomeVC.swift */; };
-		62F3FCA423DDA5A50024AA71 /* NewsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F3FCA323DDA5A50024AA71 /* NewsImage.png */; };
-		62F3FCA623DDA5A80024AA71 /* MessagesImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F3FCA523DDA5A80024AA71 /* MessagesImage.png */; };
 		62F3FCA923DDAB4E0024AA71 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F3FCA823DDAB4E0024AA71 /* MenuVC.swift */; };
 		62F3FCAB23DDACD90024AA71 /* logout_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F3FCAA23DDACD90024AA71 /* logout_icon.png */; };
 		62F3FCAD23DDAD0E0024AA71 /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F3FCAC23DDAD0E0024AA71 /* settings_icon.png */; };
@@ -41,6 +41,8 @@
 		40AC96E9F92205696E3FFB1D /* Pods-Disoft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Disoft.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Disoft/Pods-Disoft.debug.xcconfig"; sourceTree = "<group>"; };
 		62469C7B23DCDBA4004A5F4F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		62469C7F23DCE077004A5F4F /* disoft_letters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disoft_letters.png; sourceTree = "<group>"; };
+		62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailVC.swift; sourceTree = "<group>"; };
+		62903A8323DF2F6A00C4FD95 /* back_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_menu.png; sourceTree = "<group>"; };
 		62AF4D0B23DCA46D001A6C72 /* Disoft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disoft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AF4D0E23DCA46D001A6C72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62AF4D1023DCA46D001A6C72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,8 +58,6 @@
 		62E833AE23DEFBAC0013609D /* received_messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = received_messages.png; sourceTree = "<group>"; };
 		62EB141623DDDC5F001197A5 /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
 		62F3FC9F23DDA1D50024AA71 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		62F3FCA323DDA5A50024AA71 /* NewsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsImage.png; sourceTree = "<group>"; };
-		62F3FCA523DDA5A80024AA71 /* MessagesImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessagesImage.png; sourceTree = "<group>"; };
 		62F3FCA823DDAB4E0024AA71 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		62F3FCAA23DDACD90024AA71 /* logout_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout_icon.png; sourceTree = "<group>"; };
 		62F3FCAC23DDAD0E0024AA71 /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_icon.png; sourceTree = "<group>"; };
@@ -145,11 +145,10 @@
 				62F3FCB223DDB2020024AA71 /* calendar_icon.png */,
 				62E833AE23DEFBAC0013609D /* received_messages.png */,
 				62F3FCB423DDB23D0024AA71 /* documents_icon.png */,
+				62903A8323DF2F6A00C4FD95 /* back_menu.png */,
 				62EB141623DDDC5F001197A5 /* menu_icon.png */,
 				62F3FCAC23DDAD0E0024AA71 /* settings_icon.png */,
 				62F3FCAA23DDACD90024AA71 /* logout_icon.png */,
-				62F3FCA323DDA5A50024AA71 /* NewsImage.png */,
-				62F3FCA523DDA5A80024AA71 /* MessagesImage.png */,
 				62469C7F23DCE077004A5F4F /* disoft_letters.png */,
 				62F4695823DD03C200BD60D9 /* disoft_mouse.png */,
 				62469C7B23DCDBA4004A5F4F /* Icon.png */,
@@ -187,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				62FF09C623DDEBBF007E1D8A /* MessagesVC.swift */,
+				62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -253,12 +253,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F3FCB523DDB23D0024AA71 /* documents_icon.png in Resources */,
-				62F3FCA423DDA5A50024AA71 /* NewsImage.png in Resources */,
 				62469C8023DCE078004A5F4F /* disoft_letters.png in Resources */,
 				62DF304C23DCCF8C0001C034 /* disoft_preview.gif in Resources */,
+				62903A8423DF2F6A00C4FD95 /* back_menu.png in Resources */,
 				62F3FCAF23DDAE950024AA71 /* messages_icon.png in Resources */,
 				62F3FCB323DDB2020024AA71 /* calendar_icon.png in Resources */,
-				62F3FCA623DDA5A80024AA71 /* MessagesImage.png in Resources */,
 				62EB141723DDDC5F001197A5 /* menu_icon.png in Resources */,
 				62AF4D1C23DCA471001A6C72 /* LaunchScreen.storyboard in Resources */,
 				62F3FCB123DDB1BA0024AA71 /* home_icon.png in Resources */,
@@ -338,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62AF4D1123DCA46D001A6C72 /* ViewController.swift in Sources */,
+				62903A7E23DF26B700C4FD95 /* MessageDetailVC.swift in Sources */,
 				62F3FCA023DDA1D50024AA71 /* HomeVC.swift in Sources */,
 				62AF4D1723DCA46D001A6C72 /* Disoft.xcdatamodeld in Sources */,
 				62DF304823DCC2670001C034 /* LoginVC.swift in Sources */,

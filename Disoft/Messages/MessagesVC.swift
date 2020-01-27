@@ -66,6 +66,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func clearTable() {
         messages.removeAll()
         messagesDictionary.removeAll()
+        messageSectionTitles.removeAll()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -154,47 +155,31 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .normal, title: "Eliminar") { (rowAction, indexPath) in
-            self.deletePlanetIndexPath = indexPath as NSIndexPath
-            let messageKey = self.messageSectionTitles[indexPath.section]
-            if let messageValues = self.messagesDictionary[messageKey] {
-                let planetToDelete = messageValues[indexPath.row]
-                self.deletedMessage = planetToDelete
-                self.confirmDelete(planet: planetToDelete.title)
-            }
-        }
-        deleteAction.backgroundColor = .red
-        
-        return [deleteAction]
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = Array(Array(messagesDictionary)[indexPath.section].value)[indexPath.row]
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MessageDetailVC") as! MessageDetailVC
+        nextVC.messageFrom = message.from
+        nextVC.messageDate = message.date
+        nextVC.messageTitle = message.title
+        nextVC.messageDescription = message.description
+        self.present(nextVC, animated: false, completion: nil)
     }
     
-    func handleDeletePlanet(alertAction: UIAlertAction!) -> Void {
-                if let indexPath = deletePlanetIndexPath {
-                       myTableView.beginUpdates()
-                    /*messagesDictionary = messagesDictionary.mapValues{ $0.filter{
-                        $0.date == deletedMessage!.date &&
-                            $0.description == deletedMessage!.description &&
-                            $0.from == deletedMessage!.from &&
-                            $0.title == deletedMessage!.title
-                        } }*/
-                    myTableView.deleteRows(at: [indexPath as IndexPath], with: .automatic)
-                       deletePlanetIndexPath = nil
-                       //myTableView.endUpdates()
-                   }
-            }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            messages.remove(at: indexPath.item)
+            myTableView.reloadData()
+        }
+    }
     
-        func cancelDeletePlanet(alertAction: UIAlertAction!) {
-               deletePlanetIndexPath = nil
-           }
-    
-        func confirmDelete(planet: String) {
-            let alert = UIAlertController(title: "Eliminar mensaje", message: "¿Quieres eliminar \(planet)?", preferredStyle: .actionSheet)
-            let DeleteAction = UIAlertAction(title: "Eliminar", style: .destructive, handler: handleDeletePlanet)
-            let CancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: cancelDeletePlanet)
-               alert.addAction(DeleteAction)
-               alert.addAction(CancelAction)
-            self.present(alert, animated: true, completion: nil)
-           }
-
+    @IBAction func deleteAllMessages(_ sender: Any) {
+        let alert = UIAlertController(title: "¿Quieres borrar todos los mensajes?", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Sí", style: .default, handler: { action in
+            self.clearTable()
+            self.myTableView.reloadData()
+            self.myTableView.setEmptyMessage("No tienes ningún mensaje")
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        self.present(alert, animated: true)
+    }
 }

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0DA759ED6C3EED3088B3660D /* Pods_Disoft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4675F47C75D4E14691DA733 /* Pods_Disoft.framework */; };
+		622F0EBA23E18BD900CB1316 /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F0EB923E18BD900CB1316 /* AddEventVC.swift */; };
+		622F0EBC23E1A22300CB1316 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F0EBB23E1A22300CB1316 /* DatePickerVC.swift */; };
+		622F0EBE23E1A31D00CB1316 /* cancel_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 622F0EBD23E1A31D00CB1316 /* cancel_icon.png */; };
+		622F0EC023E1A32000CB1316 /* accept_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 622F0EBF23E1A32000CB1316 /* accept_icon.png */; };
+		622F0EC223E1BBF100CB1316 /* save_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 622F0EC123E1BBF000CB1316 /* save_icon.png */; };
 		62469C7C23DCDBA5004A5F4F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62469C7B23DCDBA4004A5F4F /* Icon.png */; };
 		62469C8023DCE078004A5F4F /* disoft_letters.png in Resources */ = {isa = PBXBuildFile; fileRef = 62469C7F23DCE077004A5F4F /* disoft_letters.png */; };
 		62903A7E23DF26B700C4FD95 /* MessageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */; };
@@ -41,6 +46,11 @@
 /* Begin PBXFileReference section */
 		20DE035D4B64D34C30BE05CE /* Pods-Disoft.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Disoft.release.xcconfig"; path = "Pods/Target Support Files/Pods-Disoft/Pods-Disoft.release.xcconfig"; sourceTree = "<group>"; };
 		40AC96E9F92205696E3FFB1D /* Pods-Disoft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Disoft.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Disoft/Pods-Disoft.debug.xcconfig"; sourceTree = "<group>"; };
+		622F0EB923E18BD900CB1316 /* AddEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
+		622F0EBB23E1A22300CB1316 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
+		622F0EBD23E1A31D00CB1316 /* cancel_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_icon.png; sourceTree = "<group>"; };
+		622F0EBF23E1A32000CB1316 /* accept_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accept_icon.png; sourceTree = "<group>"; };
+		622F0EC123E1BBF000CB1316 /* save_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_icon.png; sourceTree = "<group>"; };
 		62469C7B23DCDBA4004A5F4F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		62469C7F23DCE077004A5F4F /* disoft_letters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disoft_letters.png; sourceTree = "<group>"; };
 		62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailVC.swift; sourceTree = "<group>"; };
@@ -146,6 +156,8 @@
 			children = (
 				62BE09D723E08EB4006096B9 /* CalendarVC.swift */,
 				62BE09D923E08F7C006096B9 /* CalendarCell.swift */,
+				622F0EB923E18BD900CB1316 /* AddEventVC.swift */,
+				622F0EBB23E1A22300CB1316 /* DatePickerVC.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -154,11 +166,14 @@
 			isa = PBXGroup;
 			children = (
 				62F3FCB023DDB1B60024AA71 /* home_icon.png */,
+				622F0EC123E1BBF000CB1316 /* save_icon.png */,
 				62F3FCAE23DDAE900024AA71 /* messages_icon.png */,
 				62E833AC23DEFBA60013609D /* messages_sent.png */,
 				62F3FCB223DDB2020024AA71 /* calendar_icon.png */,
 				62E833AE23DEFBAC0013609D /* received_messages.png */,
+				622F0EBD23E1A31D00CB1316 /* cancel_icon.png */,
 				62F3FCB423DDB23D0024AA71 /* documents_icon.png */,
+				622F0EBF23E1A32000CB1316 /* accept_icon.png */,
 				62903A8323DF2F6A00C4FD95 /* back_menu.png */,
 				62EB141623DDDC5F001197A5 /* menu_icon.png */,
 				62F3FCAC23DDAD0E0024AA71 /* settings_icon.png */,
@@ -280,10 +295,13 @@
 				62AF4D1923DCA471001A6C72 /* Assets.xcassets in Resources */,
 				62E833AD23DEFBA60013609D /* messages_sent.png in Resources */,
 				62469C7C23DCDBA5004A5F4F /* Icon.png in Resources */,
+				622F0EBE23E1A31D00CB1316 /* cancel_icon.png in Resources */,
 				62AF4D1423DCA46D001A6C72 /* Main.storyboard in Resources */,
 				62F3FCAD23DDAD0E0024AA71 /* settings_icon.png in Resources */,
 				62F3FCAB23DDACD90024AA71 /* logout_icon.png in Resources */,
+				622F0EC023E1A32000CB1316 /* accept_icon.png in Resources */,
 				62E833AF23DEFBAD0013609D /* received_messages.png in Resources */,
+				622F0EC223E1BBF100CB1316 /* save_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,9 +374,11 @@
 				62AF4D1723DCA46D001A6C72 /* Disoft.xcdatamodeld in Sources */,
 				62DF304823DCC2670001C034 /* LoginVC.swift in Sources */,
 				62BE09D823E08EB4006096B9 /* CalendarVC.swift in Sources */,
+				622F0EBA23E18BD900CB1316 /* AddEventVC.swift in Sources */,
 				62AF4D0F23DCA46D001A6C72 /* AppDelegate.swift in Sources */,
 				62F3FCA923DDAB4E0024AA71 /* MenuVC.swift in Sources */,
 				62FF09C723DDEBBF007E1D8A /* MessagesVC.swift in Sources */,
+				622F0EBC23E1A22300CB1316 /* DatePickerVC.swift in Sources */,
 				62BE09DA23E08F7C006096B9 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -67,13 +67,11 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = messages[indexPath.row].from
         cell.detailTextLabel?.text = messages[indexPath.row].title
-
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:15))
         label.font = label.font.withSize(13)
         label.textColor = UIColor.gray
         label.text = messages[indexPath.row].date
         cell.accessoryView = label
-        
         return cell
     }
     

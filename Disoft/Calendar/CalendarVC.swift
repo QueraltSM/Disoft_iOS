@@ -8,6 +8,8 @@
 
 import UIKit
 
+var months = ["En.","Feb.","Mar.","Abr.","May.","Jun.","Jul.","Ag.","Sept.","Oct.","Nov.","Dic."]
+
 struct DisDate {
     var date: String!
     var title: String!
@@ -26,8 +28,7 @@ class CalendarVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var dates = [DisDate]()
     var sorted_dates = [Sorted_DisDate]()
     var dates_loaded = [String]()
-    var months = ["En.","Feb.","Mar.","Abr.","May.","Jun.","Jul.","Ag.","Sept.","Oct.","Nov.","Dic."]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myTableView.delegate = self
@@ -131,34 +132,8 @@ class CalendarVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 130
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MessageDetailVC") as! MessageDetailVC
-        nextVC.messageFrom = messages[indexPath.row].from
-        nextVC.messageDate = messages[indexPath.row].date
-        nextVC.messageTitle = messages[indexPath.row].title
-        nextVC.messageDescription = messages[indexPath.row].description
+    @IBAction func addNewEvent(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "AddEventVC") as! AddEventVC
         self.present(nextVC, animated: false, completion: nil)
-    }*/
-    
-    /*func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Eliminar") { (action, indexPath) in
-            self.showDeleteWarning(indexPath: indexPath)
-        }
-        delete.backgroundColor = UIColor.red
-        return [delete]
-    }
-    
-    func showDeleteWarning(indexPath: IndexPath) {
-        let alert = UIAlertController(title: "¿Quieres eliminar este mensaje?", message: "", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        let delete = UIAlertAction(title: "Eliminar", style: .destructive) { _ in
-            DispatchQueue.main.async {
-                self.messages.remove(at: indexPath.row)
-                self.myTableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        }
-        alert.addAction(cancel)
-        alert.addAction(delete)
-        present(alert, animated: true, completion: nil)
-    }*/
+    }    
 }

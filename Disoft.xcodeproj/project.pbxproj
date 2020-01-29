@@ -19,6 +19,8 @@
 		62AF4D1923DCA471001A6C72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62AF4D1823DCA471001A6C72 /* Assets.xcassets */; };
 		62AF4D1C23DCA471001A6C72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62AF4D1A23DCA471001A6C72 /* LaunchScreen.storyboard */; };
 		62AF4D2A23DCAAEF001A6C72 /* green_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62AF4D2923DCAAEF001A6C72 /* green_background.jpg */; };
+		62BE09D823E08EB4006096B9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE09D723E08EB4006096B9 /* CalendarVC.swift */; };
+		62BE09DA23E08F7C006096B9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE09D923E08F7C006096B9 /* CalendarCell.swift */; };
 		62DF304823DCC2670001C034 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DF304723DCC2670001C034 /* LoginVC.swift */; };
 		62DF304C23DCCF8C0001C034 /* disoft_preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 62DF304B23DCCF8B0001C034 /* disoft_preview.gif */; };
 		62E833AD23DEFBA60013609D /* messages_sent.png in Resources */ = {isa = PBXBuildFile; fileRef = 62E833AC23DEFBA60013609D /* messages_sent.png */; };
@@ -52,6 +54,8 @@
 		62AF4D1B23DCA471001A6C72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62AF4D1D23DCA471001A6C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62AF4D2923DCAAEF001A6C72 /* green_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green_background.jpg; sourceTree = "<group>"; };
+		62BE09D723E08EB4006096B9 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		62BE09D923E08F7C006096B9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		62DF304723DCC2670001C034 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		62DF304B23DCCF8B0001C034 /* disoft_preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = disoft_preview.gif; sourceTree = "<group>"; };
 		62E833AC23DEFBA60013609D /* messages_sent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messages_sent.png; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 		62AF4D0D23DCA46D001A6C72 /* Disoft */ = {
 			isa = PBXGroup;
 			children = (
+				62BE09D623E08E9C006096B9 /* Calendar */,
 				62FF09C823DDEBC6007E1D8A /* Messages */,
 				62F3FCA723DDAB2F0024AA71 /* Menu */,
 				62F3FC9E23DDA14C0024AA71 /* Home */,
@@ -134,6 +139,15 @@
 				62AF4D1523DCA46D001A6C72 /* Disoft.xcdatamodeld */,
 			);
 			path = Disoft;
+			sourceTree = "<group>";
+		};
+		62BE09D623E08E9C006096B9 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				62BE09D723E08EB4006096B9 /* CalendarVC.swift */,
+				62BE09D923E08F7C006096B9 /* CalendarCell.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		62DF304D23DCD1920001C034 /* Images */ = {
@@ -341,9 +355,11 @@
 				62F3FCA023DDA1D50024AA71 /* HomeVC.swift in Sources */,
 				62AF4D1723DCA46D001A6C72 /* Disoft.xcdatamodeld in Sources */,
 				62DF304823DCC2670001C034 /* LoginVC.swift in Sources */,
+				62BE09D823E08EB4006096B9 /* CalendarVC.swift in Sources */,
 				62AF4D0F23DCA46D001A6C72 /* AppDelegate.swift in Sources */,
 				62F3FCA923DDAB4E0024AA71 /* MenuVC.swift in Sources */,
 				62FF09C723DDEBBF007E1D8A /* MessagesVC.swift in Sources */,
+				62BE09DA23E08F7C006096B9 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

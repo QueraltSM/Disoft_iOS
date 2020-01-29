@@ -64,7 +64,6 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("entro = \(delete)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = messages[indexPath.row].from
         cell.detailTextLabel?.text = messages[indexPath.row].title

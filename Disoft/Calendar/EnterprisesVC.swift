@@ -13,12 +13,29 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var myTableView: UITableView!
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
+    var enterpriseDictionary = [String: [String]]()
+    var enterpriseSectionTitles = [String]()
+    
+    func setEnterprises() {
+        enterprises = ["Alberto Sánchez", "Alba Sosa", "Borja Quintana", "Eva González", "Aura Lacunza" ,"Julián Dominguez", "Felipe Reyes", "Tomás Reyes", "Carla Expósito","Sara Quintela","Esther Programación", "Queralt Sosa"]
+        for enterprise in enterprises {
+            let enterpriseKey = String(enterprise.prefix(1))
+            if var enterpriseValues = enterpriseDictionary[enterpriseKey] {
+                enterpriseValues.append(enterprise)
+                enterpriseDictionary[enterpriseKey] = enterpriseValues
+            } else {
+                enterpriseDictionary[enterpriseKey] = [enterprise]
+            }
+        }
+        enterpriseSectionTitles = [String](enterpriseDictionary.keys)
+        enterpriseSectionTitles = enterpriseSectionTitles.sorted(by: { $0 < $1 })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myTableView.delegate = self
         self.myTableView.dataSource = self
-        enterprises = ["Alberto Sánchez", "Esther Programación", "Queralt Sosa"]
+        setEnterprises()
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchBar.placeholder = "Encuentra tu empresa"
@@ -48,13 +65,17 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             return filteredTableData.count
         } else {
-            if enterprises.count == 0 {
-                self.myTableView.setEmptyMessage("No existe ninguna empresa")
-            } else {
-                self.myTableView.restore()
+            let enterpriseKey = enterpriseSectionTitles[section]
+            if let enterpriseValues = enterpriseDictionary[enterpriseKey] {
+                if enterpriseValues.count == 0 {
+                    self.myTableView.setEmptyMessage("No existe ninguna empresa")
+                } else {
+                    self.myTableView.restore()
+                }
+                return enterpriseValues.count
             }
         }
-        return enterprises.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,7 +84,10 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.textLabel?.text = filteredTableData[indexPath.row]
             return cell
         } else {
-            cell.textLabel?.text = enterprises[indexPath.row]
+            let enterpriseKey = enterpriseSectionTitles[indexPath.section]
+            if let enterpriseValues = enterpriseDictionary[enterpriseKey] {
+                cell.textLabel?.text = enterpriseValues[indexPath.row]
+            }
         }
         if selected_enterprises.contains(enterprises[indexPath.row]) {
             cell.accessoryType = .checkmark
@@ -88,4 +112,17 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "AddEventVC") as! AddEventVC
         self.present(nextVC, animated: false, completion: nil)
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return enterpriseSectionTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return enterpriseSectionTitles[section]
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return enterpriseSectionTitles
+    }
+    
 }

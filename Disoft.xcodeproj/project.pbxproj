@@ -15,6 +15,7 @@
 		622F0EC223E1BBF100CB1316 /* save_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 622F0EC123E1BBF000CB1316 /* save_icon.png */; };
 		62469C7C23DCDBA5004A5F4F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62469C7B23DCDBA4004A5F4F /* Icon.png */; };
 		62469C8023DCE078004A5F4F /* disoft_letters.png in Resources */ = {isa = PBXBuildFile; fileRef = 62469C7F23DCE077004A5F4F /* disoft_letters.png */; };
+		6266BEC323E22C4900620E22 /* EnterprisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266BEC223E22C4900620E22 /* EnterprisesVC.swift */; };
 		62903A7E23DF26B700C4FD95 /* MessageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */; };
 		62903A8423DF2F6A00C4FD95 /* back_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 62903A8323DF2F6A00C4FD95 /* back_menu.png */; };
 		62AF4D0F23DCA46D001A6C72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AF4D0E23DCA46D001A6C72 /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		622F0EC123E1BBF000CB1316 /* save_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_icon.png; sourceTree = "<group>"; };
 		62469C7B23DCDBA4004A5F4F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		62469C7F23DCE077004A5F4F /* disoft_letters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disoft_letters.png; sourceTree = "<group>"; };
+		6266BEC223E22C4900620E22 /* EnterprisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterprisesVC.swift; sourceTree = "<group>"; };
 		62903A7D23DF26B700C4FD95 /* MessageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailVC.swift; sourceTree = "<group>"; };
 		62903A8323DF2F6A00C4FD95 /* back_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_menu.png; sourceTree = "<group>"; };
 		62AF4D0B23DCA46D001A6C72 /* Disoft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disoft.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 		62BE09D623E08E9C006096B9 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				6266BEC223E22C4900620E22 /* EnterprisesVC.swift */,
 				62BE09D723E08EB4006096B9 /* CalendarVC.swift */,
 				62BE09D923E08F7C006096B9 /* CalendarCell.swift */,
 				622F0EB923E18BD900CB1316 /* AddEventVC.swift */,
@@ -374,6 +377,7 @@
 				62AF4D1723DCA46D001A6C72 /* Disoft.xcdatamodeld in Sources */,
 				62DF304823DCC2670001C034 /* LoginVC.swift in Sources */,
 				62BE09D823E08EB4006096B9 /* CalendarVC.swift in Sources */,
+				6266BEC323E22C4900620E22 /* EnterprisesVC.swift in Sources */,
 				622F0EBA23E18BD900CB1316 /* AddEventVC.swift in Sources */,
 				62AF4D0F23DCA46D001A6C72 /* AppDelegate.swift in Sources */,
 				62F3FCA923DDAB4E0024AA71 /* MenuVC.swift in Sources */,

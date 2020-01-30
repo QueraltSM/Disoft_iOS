@@ -34,9 +34,9 @@ class DatePickerVC: UIViewController, UITabBarDelegate {
             let minutes = components.minute
             let date_time = "\(day!) \(months[month!-1]) a las \(hour!):\(minutes!)"
             if (pickerTitle.contains("inicio")) {
-                UserDefaults.standard.set(date_time, forKey: "startDate_picker_selection")
+                startTitle = date_time
             } else {
-                UserDefaults.standard.set(date_time, forKey: "endDate_picker_selection")
+                endTitle = date_time
             }
         }
         self.present(nextVC, animated: false, completion: nil)

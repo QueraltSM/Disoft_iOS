@@ -10,9 +10,14 @@ import UIKit
 import EventKit
 
 var datePickerVC : DatePickerVC!
+var selected_enterprises = [String()]
+var startTitle = "Fecha de inicio"
+var endTitle = "Fecha de finalización"
+var eventTitle = ""
+var eventDescription = ""
 
 class AddEventVC: UIViewController {
-    
+    @IBOutlet weak var allDay: UISwitch!
     @IBOutlet weak var enterprises: UIButton!
     @IBOutlet weak var event_title: UITextField!
     @IBOutlet weak var event_description: UITextView!
@@ -32,40 +37,44 @@ class AddEventVC: UIViewController {
         self.present(nextVC, animated: false, completion: nil)
     }
     
-    
-    func insertEvent(store: EKEventStore) {
-        let calendars = store.calendars(for: .event)
-        for calendar in calendars {
-            if calendar.title == "ioscreator" {
-                let startDate = Date()
-                let endDate = startDate.addingTimeInterval(2 * 60 * 60)
-                let event = EKEvent(eventStore: store)
-                event.calendar = calendar
-                event.title = "New Meeting"
+    func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = title
                 event.startDate = startDate
-                event.endDate = endDate
-                do {
-                    try store.save(event, span: .thisEvent)
-                    print("Event saved")
+                event.isAllDay = self.allDay.isOn
+                if !self.allDay.isOn {
+                    event.endDate = endDate
                 }
-                catch {
-                    print("Error saving event in calendar")             }
+                event.notes = description
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                } catch let e as NSError {
+                    completion?(false, e)
+                    return
+                }
+                completion?(true, nil)
+            } else {
+                completion?(false, error as NSError?)
             }
-        }
+        })
     }
     
     func askAuthorization() {
         let eventStore = EKEventStore()
         switch EKEventStore.authorizationStatus(for: .event) {
         case .authorized:
-            insertEvent(store: eventStore)
+            addEventToCalendar(title: event_title.text!, description: event_description.text!, startDate: Date(), endDate: Date())
         case .denied:
             print("Access denied")
         case .notDetermined:
             eventStore.requestAccess(to: .event, completion:
                 {[weak self] (granted: Bool, error: Error?) -> Void in
                     if granted {
-                        self!.insertEvent(store: eventStore)
+                        self!.addEventToCalendar(title: (self?.event_title.text!)!, description: self!.event_description.text!, startDate: Date(), endDate: Date())
                     } else {
                         print("Access denied")
                     }
@@ -75,6 +84,20 @@ class AddEventVC: UIViewController {
         }
     }
  
+    @IBAction func pressAllDay(_ sender: Any) {
+        endDate.isEnabled = !allDay.isOn
+        if allDay.isOn {
+            setEndDateColors(color: "#D8D8D8")
+        } else {
+            setEndDateColors(color: "#2E6300")
+        }
+    }
+    
+    func setEndDateColors(color: String) {
+        endDate.layer.borderColor = UIColor.init(hexString: color).cgColor
+        endDate.setTitleColor(UIColor.init(hexString: color), for: .normal)
+    }
+    
     @IBAction func showEndDate(_ sender: Any) {
         showPopOver(pickerTitle: "Fecha de finalización")
     }
@@ -87,26 +110,38 @@ class AddEventVC: UIViewController {
         startDate.layer.borderWidth = 2
         endDate.layer.borderWidth = 2
         startDate.layer.borderColor = UIColor.init(hexString: "#2E6300").cgColor
-        endDate.layer.borderColor = UIColor.init(hexString: "#2E6300").cgColor
+        startDate.setTitleColor(UIColor.init(hexString: "#2E6300"), for: .normal)
+        setEndDateColors(color: "#2E6300")
         enterprises.backgroundColor = UIColor.init(hexString: "#2E6300")
         startDate.layer.cornerRadius = startDate.bounds.height / 2
         endDate.layer.cornerRadius = endDate.bounds.height / 2
         enterprises.layer.cornerRadius = enterprises.bounds.height / 2
     }
     
+    
+    @IBAction func selectEnterprises(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "EnterprisesVC") as! EnterprisesVC
+        self.present(nextVC, animated: false, completion: nil)
+    }
+    
+    @IBAction func saveEvent(_ sender: Any) {
+        askAuthorization()
+    }
+    
+    func setDatesButtons () {
+        startDate.setTitle(startTitle, for: .normal)
+        endDate.setTitle(endTitle, for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        event_description.layer.borderWidth = 2
+        event_description.layer.borderColor = UIColor.init(hexString: "#2E6300").cgColor
         askAuthorization()
         customButtons()
+        enterprises.setTitle("Empresas (\(selected_enterprises.count-1))", for: .normal)
         event_title.setStyle(color: UIColor.init(hexString: "#2E6300"))
-        var startTitle = UserDefaults.standard.object(forKey: "startDate_picker_selection") as? String
-        var endTitle = UserDefaults.standard.object(forKey: "endDate_picker_selection") as? String
-        if startTitle == nil {
-            startTitle = "Fecha de inicio"
-        }
-        if endTitle == nil {
-            endTitle = "Fecha de finalización"
-        }
+        event_title.textColor = UIColor.init(hexString: "#2E6300")
         startDate.setTitle(startTitle, for: .normal)
         endDate.setTitle(endTitle, for: .normal)
     }

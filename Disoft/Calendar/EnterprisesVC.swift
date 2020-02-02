@@ -8,27 +8,18 @@
 
 import UIKit
 
-class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var allEnterprises = [String]()
     @IBOutlet weak var myTableView: UITableView!
     var filteredTableData = [String]()
-    var resultSearchController = UISearchController()
     var enterpriseDictionary = [String: [String]]()
     var enterpriseSectionTitles = [String]()
-    var cancel = false
     
     func setEnterprises(enterprises: [String]) {
         enterpriseDictionary = [String: [String]]()
         enterpriseSectionTitles = [String]()
-
-        var enterprises_aux = enterprises
-        if cancel {
-            enterprises_aux = getEnterprises()
-            cancel = false
-        }
-        
-        for enterprise in enterprises_aux {
+        for enterprise in enterprises {
             let enterpriseKey = String(enterprise.prefix(1))
             if var enterpriseValues = enterpriseDictionary[enterpriseKey] {
                 enterpriseValues.append(enterprise)
@@ -39,20 +30,16 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         enterpriseSectionTitles = [String](enterpriseDictionary.keys)
         enterpriseSectionTitles = enterpriseSectionTitles.sorted(by: { $0 < $1 })
-
-        if !resultSearchController.isActive && enterprises_aux.count == 0 {
+        if enterprises.count == 0 {
             self.myTableView.setEmptyMessage("No existe ninguna empresa")
-        } else if resultSearchController.isActive && !resultSearchController.isEditing && enterprises_aux.count == 0 {
-            self.myTableView.setEmptyMessage("No existe ninguna coincidencia")
         } else {
             self.myTableView.restore()
-            self.myTableView.reloadData()
         }
         self.myTableView.reloadData()
     }
     
     func getEnterprises() -> [String] {
-        return ["Alberto Sánchez", "Alba Sosa", "Borja Quintana", "Eva González", "Aura Lacunza" ,"Julián Dominguez", "Felipe Reyes", "Tomás Reyes", "Carla Expósito","Sara Quintela","Esther Programación", "Queralt Sosa"]
+        return ["Alberto Sánchez", "Alba Sosa", "Borja Quintana", "Eva González", "Aura Lacunza" ,"Julián Dominguez", "Felipe Reyes", "Tomás Reyes", "Carla Expósito","Sara Quintela","Esther Programación", "Queralt Sosa"].sorted()
     }
     
     override func viewDidLoad() {
@@ -61,32 +48,7 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.myTableView.dataSource = self
         self.allEnterprises = getEnterprises()
         setEnterprises(enterprises: allEnterprises)
-        resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchBar.placeholder = "Encuentra tu empresa"
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-            controller.searchBar.searchBarStyle = .minimal
-            myTableView.tableHeaderView = controller.searchBar
-            return controller
-        })()
-        resultSearchController.searchBar.delegate = self
         myTableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        cancel = true
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        filteredTableData.removeAll(keepingCapacity: false)
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (allEnterprises as NSArray).filtered(using: searchPredicate)
-        filteredTableData = array as! [String]
-        enterpriseDictionary = [String: [String]]()
-        enterpriseSectionTitles = [String]()
-        setEnterprises(enterprises: filteredTableData)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,23 +66,18 @@ class EnterprisesVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let enterpriseValues = enterpriseDictionary[enterpriseKey] {
             cell.textLabel?.text = enterpriseValues[indexPath.row]
         }
-        if selected_enterprises.contains(allEnterprises[indexPath.row]) {
+        cell.selectionStyle = .none
+        if let selectedRows = tableView.indexPathsForSelectedRows,
+            selectedRows.contains(indexPath){
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.myTableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            self.myTableView.cellForRow(at: indexPath)?.accessoryType = .none
-            if let index = selected_enterprises.firstIndex(of: allEnterprises[indexPath.row]) {
-                selected_enterprises.remove(at: index)
-            }
-        } else {
-            self.myTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            selected_enterprises.append(allEnterprises[indexPath.row])
-        }
-        self.myTableView.deselectRow(at: indexPath, animated: true)
+        self.myTableView.cellForRow(at: indexPath)!.accessoryType = .checkmark
     }
     
     @IBAction func back(_ sender: Any) {

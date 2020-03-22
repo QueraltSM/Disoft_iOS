@@ -11,6 +11,9 @@ import Alamofire
 
 class LoginVC: UIViewController {
     
+    var token = ""
+    var fullname = ""
+    
     @IBOutlet weak var companyFld: UITextField!
     @IBOutlet weak var usernameFld: UITextField!
     @IBOutlet weak var passwordFld: UITextField!
@@ -96,20 +99,27 @@ class LoginVC: UIViewController {
         }
     }
     
+    func goHome() {
+        UserDefaults.standard.set(companyFld.text!, forKey: "nickname")
+        UserDefaults.standard.set(usernameFld.text!, forKey: "username")
+        UserDefaults.standard.set(fullname, forKey: "fullname")
+        UserDefaults.standard.set(companyFld.text!, forKey: "password")
+        UserDefaults.standard.set(token, forKey: "token")
+        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+        UserDefaults.standard.synchronize()
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.present(nextVC, animated: false, completion: nil)
+        
+    }
+    
     func decodeJSON(json: NSDictionary) {
         let errorCode = json["error_code"] as! Int
         var errorMsg = ""
         switch errorCode {
         case 0: // success
-            let fullname = json["fullName"]! as! String
-            let token = json["token"]! as! String
-            UserDefaults.standard.set(companyFld.text, forKey: "nickname")
-            UserDefaults.standard.set(usernameFld.text, forKey: "username")
-            UserDefaults.standard.set(fullname, forKey: "fullname")
-            UserDefaults.standard.set(passwordFld.text, forKey: "password")
-            UserDefaults.standard.set(token, forKey: "token")
-            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self.present(nextVC, animated: false, completion: nil)
+            fullname = json["fullName"]! as! String
+            token = json["token"]! as! String
+            self.goHome()
             break
         case 1: // company error
             errorMsg = "Alias incorrecto"
